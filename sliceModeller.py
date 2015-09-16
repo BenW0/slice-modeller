@@ -76,7 +76,7 @@ import sys
 
 # Model file... FUTURE: Turn this into a dialog.
 MODEL_FOLDER = os.path.abspath(os.path.join(".", "models"))
-model = "rect_100-70-100_stack.json"
+model = "cyl_5mm_100.json"
 
 # path to ImageMagick. Leave blank if it's in your path and nobody else has a tool named convert.
 imagemagick_path = r""
@@ -187,12 +187,12 @@ class Primitive:
 class Rect(Primitive):
     def __init__(self, stack, left, top, width, height, start, end, color):
         Primitive.__init__(self, stack, start, end, color)
-        self.left = left
-        self.top = top
+        self.left = round(left, 0)
+        self.top = round(top, 0)
         # NOTE that imagemagick draws things from .left pixel to .right pixel inclusive.
         # subtract one from right and bottom to keep the results of a 100px rectangle really 100px.
-        self.right = left + width - 1
-        self.bottom = top + height - 1
+        self.right = self.left + round(width, 0) - 1
+        self.bottom = self.top + round(height, 0) - 1
 
     @staticmethod
     def from_json(stack, js):
@@ -225,17 +225,17 @@ class Rect(Primitive):
         out = Primitive.draw(self)
         out.extend(["-fill", self.color, "-stroke", "none", "-draw",
                     "rectangle %.1f,%.1f %.1f,%.1f" %
-                    (round(self.left, 0), round(self.top, 0), round(self.right, 0), round(self.bottom, 0))])
+                    (self.left, self.top, self.right, self.bottom)])
         return out
 
 
 class Ellipse(Primitive):
     def __init__(self, stack, left, top, dx, dy, start, end, color):
         Primitive.__init__(self, stack, start, end, color)
-        self.left = left
-        self.top = top
-        self.right = left + dx - 1        # size in X and Y directions for the ellipse. Off by 1 in ImageMagick's implementaiton.
-        self.bottom = top + dy - 1
+        self.left = round(left, 0)
+        self.top = round(top, 0)
+        self.right = self.left + round(dx, 0) - 1        # size in X and Y directions for the ellipse. Off by 1 in ImageMagick's implementaiton.
+        self.bottom = self.top + round(dy, 0) - 1
 
     @staticmethod
     def from_json(stack, js):
@@ -294,7 +294,7 @@ class Ellipse(Primitive):
         out = Primitive.draw(self)
         out.extend(["-fill", self.color, "-stroke", "none", "-draw",
                     "arc %.1f,%.1f %.1f,%.1f 0,360" %
-                    (round(self.left, 0), round(self.top, 0), round(self.right, 0), round(self.bottom, 0))])
+                    (self.left, self.top, self.right, self.bottom)])
         return out
 
 
