@@ -6,7 +6,7 @@
   },
   "Primitives":[
     {
-      "Circ": {
+      "Ellipse": {
         "D":"29"
       },
       "Start":0,
@@ -14,7 +14,7 @@
       "Color":"rgb(255,255,255)"
     },
     {
-      "Circ": {
+      "Ellipse": {
         "D":"36"
       },
       "Start":50,
@@ -22,7 +22,7 @@
       "Color":"rgb(178,178,178)"
     },
     {
-      "Circ": {
+      "Ellipse": {
         "D":"29"
       },
       "Start":100,

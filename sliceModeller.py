@@ -56,7 +56,7 @@ __author__ = 'Ben'
 #
 #     },
 #     {
-#       "Circ": {
+#       "Ellipse": {
 #         "Cx": 75,  <-- center of the circle, x. If omitted, centers the object on the screen.
 #         "Cy": 100, <-- center of the circle, y
 #         "R": 50    <-- radius of the circle. Can alternatively specify "D" for diameter
@@ -75,8 +75,8 @@ import sys
 
 
 # Model file... FUTURE: Turn this into a dialog.
-MODEL_FOLDER = "./models"
-model = "cyl_70-100-70_stack.json"
+MODEL_FOLDER = os.path.abspath(os.path.join(".", "models"))
+model = "rect_100-70-100_stack.json"
 
 # path to ImageMagick. Leave blank if it's in your path and nobody else has a tool named convert.
 imagemagick_path = r""
@@ -167,8 +167,8 @@ class Primitive:
             # First, try to parse this as a rect.
             if "Rect" in js:
                 return Rect.from_json(stack, js)
-            elif "Circ" in js > 0:
-                return Circ.from_json(stack, js)
+            elif "Ellipse" in js > 0:
+                return Ellipse.from_json(stack, js)
             else:
                 print("Invalid model file. Must have one and only one Circ or Rect object per Primitive")
         except:
@@ -189,8 +189,10 @@ class Rect(Primitive):
         Primitive.__init__(self, stack, start, end, color)
         self.left = left
         self.top = top
-        self.right = left + width
-        self.bottom = top + height
+        # NOTE that imagemagick draws things from .left pixel to .right pixel inclusive.
+        # subtract one from right and bottom to keep the results of a 100px rectangle really 100px.
+        self.right = left + width - 1
+        self.bottom = top + height - 1
 
     @staticmethod
     def from_json(stack, js):
@@ -219,36 +221,61 @@ class Rect(Primitive):
 
     def draw(self):
         """Generates the imagemagick code for this rectangle."""
+        # Occasional single-pixel weirdness may occur because of rounding here...
         out = Primitive.draw(self)
         out.extend(["-fill", self.color, "-stroke", "none", "-draw",
-                    "rectangle %u,%u %u,%u" % (self.left, self.top, self.right, self.bottom)])
+                    "rectangle %.1f,%.1f %.1f,%.1f" %
+                    (round(self.left, 0), round(self.top, 0), round(self.right, 0), round(self.bottom, 0))])
         return out
 
 
-class Circ(Primitive):
-    def __init__(self, stack, cx, cy, r, start, end, color):
+class Ellipse(Primitive):
+    def __init__(self, stack, left, top, dx, dy, start, end, color):
         Primitive.__init__(self, stack, start, end, color)
-        self.cx = cx
-        self.cy = cy
-        self.r = r
+        self.left = left
+        self.top = top
+        self.right = left + dx - 1        # size in X and Y directions for the ellipse. Off by 1 in ImageMagick's implementaiton.
+        self.bottom = top + dy - 1
 
     @staticmethod
     def from_json(stack, js):
         try:
-            if "Cx" in js["Circ"]:
-                cx = numeric_param(js["Circ"]["Cx"])
+            if "R" in js["Ellipse"]:
+                dx = numeric_param(js["Ellipse"]["R"]) * 2
+                dy = dx
+            elif "D" in js["Ellipse"]:
+                dx = numeric_param(js["Ellipse"]["D"])
+                dy = dx
+            elif "Width" in js["Ellipse"]:
+                dx = numeric_param(js["Ellipse"]["Width"])
+                if "Height" in js["Ellipse"]:
+                    dy = numeric_param(js["Ellipse"]["Height"])
+                else:
+                    print("Ellipse with width but no height! Assuming a circle.")
+                    dy = dx
+            else:
+                print("Missing parameter in the Ellipse construct - please specify R or D or Width and Height!")
+                dx = 10
+                dy = 10
+
+            if "Cx" in js["Ellipse"]:
+                cx = numeric_param(js["Ellipse"]["Cx"])
+                left = cx - dx / 2
+            elif "Left" in js["Ellipse"]:
+                left = numeric_param(js["Ellipse"]["Left"])
             else:
                 cx = stack.width / 2
-            if "Cy" in js["Circ"]:
-                cy = numeric_param(js["Circ"]["Cy"])
+                left = cx - dx / 2
+
+            if "Cy" in js["Ellipse"]:
+                cy = numeric_param(js["Ellipse"]["Cy"])
+                top = cy - dy / 2
+            elif "Top" in js["Ellipse"]:
+                top = numeric_param(js["Ellipse"]["Top"])
             else:
                 cy = stack.height / 2
-            if "R" in js["Circ"]:
-                r = numeric_param(js["Circ"]["R"])
-            elif "D" in js["Circ"]:
-                r = numeric_param(js["Circ"]["D"]) / 2
-            else:
-                print("Missing parameter in the Circ construct - please specify R or D!")
+                top = cy - dy / 2
+
             start = numeric_param(js["Start"])
             if "End" in js:
                 end = numeric_param(js["End"])
@@ -256,16 +283,18 @@ class Circ(Primitive):
                 end = stack.layers
             color = js["Color"]
 
-            return Circ(stack, cx, cy, r, start, end, color)
+            return Ellipse(stack, left, top, dx, dy, start, end, color)
         except:
             print "Error parsing JSON file!"
             return None
 
     def draw(self):
         """Generates the imagemagick code for this rectangle."""
+        # Occasional single-pixel weirdness may occur because of rounding here...
         out = Primitive.draw(self)
         out.extend(["-fill", self.color, "-stroke", "none", "-draw",
-                    "ellipse %u,%u %u,%u 0,360" % (self.cx, self.cy, self.r, self.r)])
+                    "arc %.1f,%.1f %.1f,%.1f 0,360" %
+                    (round(self.left, 0), round(self.top, 0), round(self.right, 0), round(self.bottom, 0))])
         return out
 
 
