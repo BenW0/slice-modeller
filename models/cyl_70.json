@@ -1,0 +1,17 @@
+{"Stack": {
+  "Name":"cyl_70",
+  "Layers":150,
+  "Width":500,
+  "Height":300
+  },
+  "Primitives":[
+    {
+      "Circ": {
+        "D":"36"
+      },
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(178,178,178)"
+    }
+  ]
+}

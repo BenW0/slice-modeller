@@ -1,0 +1,33 @@
+{"Stack": {
+  "Name":"cyl_100-70-100_stack",
+  "Layers":150,
+  "Width":500,
+  "Height":300
+  },
+  "Primitives":[
+    {
+      "Circ": {
+        "D":"29"
+      },
+      "Start":0,
+      "End":"49",
+      "Color":"rgb(255,255,255)"
+    },
+    {
+      "Circ": {
+        "D":"36"
+      },
+      "Start":50,
+      "End":"99",
+      "Color":"rgb(178,178,178)"
+    },
+    {
+      "Circ": {
+        "D":"29"
+      },
+      "Start":100,
+      "End":"150",
+      "Color":"rgb(255,255,255)"
+    }
+  ]
+}

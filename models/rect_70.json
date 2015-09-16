@@ -1,0 +1,18 @@
+{"Stack": {
+  "Name":"rect_70",
+  "Layers":150,
+  "Width":500,
+  "Height":300
+  },
+  "Primitives":[
+    {
+      "Rect": {
+        "Width":"15.25/0.04",
+        "Height":"4.25/0.04"
+      },
+      "Start":0,
+      "End":"3/0.1",
+      "Color":"rgb(178,178,178)"
+    }
+  ]
+}

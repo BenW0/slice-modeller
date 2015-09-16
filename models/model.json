@@ -1,0 +1,30 @@
+{"Stack": {
+  "Name":"Test",
+  "Layers":5,
+  "Width":500,
+  "Height":300
+  },
+  "Primitives":[
+    {
+      "Rect": {
+        "Left":50,
+        "Top":100,
+        "Width":200,
+        "Height":100
+      },
+      "Start":0,
+      "End":3,
+      "Color":"rgb(255,255,255)"
+    },
+    {
+      "Circ": {
+        "Cx": 75,
+        "Cy": 100,
+        "R": 50
+      },
+      "Start":3,
+      "End":60,
+      "Color":"rgb(230,230,230)"
+    }
+  ]
+}
