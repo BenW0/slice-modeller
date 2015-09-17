@@ -76,7 +76,7 @@ import sys
 
 # Model file... FUTURE: Turn this into a dialog.
 MODEL_FOLDER = os.path.abspath(os.path.join(".", "models"))
-model = "cyl_5mm_100.json"
+model = "cyl3_13DP96_70_Match.json"
 
 # path to ImageMagick. Leave blank if it's in your path and nobody else has a tool named convert.
 imagemagick_path = r""

@@ -1,0 +1,89 @@
+{"Stack": {
+  "Name":"cyl3_70-100-70_stack",
+  "Layers":150,
+  "Width":500,
+  "Height":300
+  },
+  "Primitives":[
+    {
+      "Ellipse": {
+        "D":"36"
+      },
+      "Start":0,
+      "End":"49",
+      "Color":"rgb(178,178,178)"
+    },
+    {
+      "Ellipse": {
+        "D":"29"
+      },
+      "Start":50,
+      "End":"99",
+      "Color":"rgb(255,255,255)"
+    },
+    {
+      "Ellipse": {
+        "D":"36"
+      },
+      "Start":100,
+      "End":"150",
+      "Color":"rgb(178,178,178)"
+    },
+
+    {
+      "Ellipse": {
+        "D":"36",
+        "Cx":150
+      },
+      "Start":0,
+      "End":"49",
+      "Color":"rgb(178,178,178)"
+    },
+    {
+      "Ellipse": {
+        "D":"29",
+        "Cx":150
+      },
+      "Start":50,
+      "End":"99",
+      "Color":"rgb(255,255,255)"
+    },
+    {
+      "Ellipse": {
+        "D":"36",
+        "Cx":150
+      },
+      "Start":100,
+      "End":"150",
+      "Color":"rgb(178,178,178)"
+    },
+
+    {
+      "Ellipse": {
+        "D":"36",
+        "Cx":350
+      },
+      "Start":0,
+      "End":"49",
+      "Color":"rgb(178,178,178)"
+    },
+    {
+      "Ellipse": {
+        "D":"29",
+        "Cx":350
+      },
+      "Start":50,
+      "End":"99",
+      "Color":"rgb(255,255,255)"
+    },
+    {
+      "Ellipse": {
+        "D":"36",
+        "Cx":350
+      },
+      "Start":100,
+      "End":"150",
+      "Color":"rgb(178,178,178)"
+    }
+  ]
+}

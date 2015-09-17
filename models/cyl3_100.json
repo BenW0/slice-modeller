@@ -1,0 +1,35 @@
+{"Stack": {
+  "Name":"cyl3_100",
+  "Layers":150,
+  "Width":500,
+  "Height":300
+  },
+  "Primitives":[
+    {
+      "Ellipse": {
+        "D":"29"
+      },
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(255,255,255)"
+    },
+    {
+      "Ellipse": {
+        "D":"29",
+        "Cx":150
+      },
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(255,255,255)"
+    },
+    {
+      "Ellipse": {
+        "D":"29",
+        "Cx":350
+      },
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(255,255,255)"
+    }
+  ]
+}

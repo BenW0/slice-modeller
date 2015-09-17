@@ -81,9 +81,6 @@ def main():
     if not os.path.exists(input_cws) :
         return  # done!
     
-    cws_dir = input_cws + ".temp"
-    
-    
     # get the slice files to use
     if OVERRIDE_SLICE == '' :
         input_slice = tkFileDialog.askopenfilename(filetypes=[('All Files', '.*'), ('Image Files', '.png;.bmp;.tif;.tiff')],title="Select FIRST Slice File")
@@ -102,7 +99,18 @@ def main():
     
     if output_cws == '' :
         return      # cancel!
-    
+
+    cws_hack(input_cws, input_slice, output_cws)
+
+
+def cws_hack(input_cws, input_slice, output_cws, quiet=False):
+
+    if not os.path.exists(input_cws) or not os.path.exists(input_slice) or output_cws == '':
+        print("Invalid input to cws_hack!")
+        return      # cancel!
+
+    cws_dir = input_cws + ".temp"
+
     # Unzip the file
     zf = zipfile.ZipFile(input_cws, "r")
     zf.extractall(cws_dir)
@@ -167,7 +175,8 @@ def main():
     # CW is strange in that the names of the image files need to match the name
     # of the output archive, not the input!
     while os.path.exists(next_cws_in) and os.path.exists(next_slice) :
-        print("Converting %s\r" % next_slice)
+        if not quiet:
+            print("Converting %s\r" % next_slice)
         # filter the slice and copy it onto the cws:
         args = ["convert", next_slice]
         args.extend(imagemagick_flags)
@@ -189,7 +198,8 @@ def main():
     
     # if we ran out of slice files before we ran out of cws slices, set all remaining cws slices to black.
     while os.path.exists(next_cws_in) :
-        print("Blanking %s\r" % next_cws_in)
+        if not quiet:
+            print("Blanking %s\r" % next_cws_in)
         # filter the slice and copy it onto the cws:
         args = ["convert", "-size", sizestr, "xc:black", next_cws_out]
         subprocess.call(args, shell=True)
@@ -245,8 +255,10 @@ def countsliceimages(slice_fname, slice_numpad, slice_id) :
 
 if __name__ == '__main__':
     # Check for command line arguments
+    print sys.argv
     if len(sys.argv) == 4:
         # Override the paths with arguments passed:
+        print("Got command line arguments")
         OVERRIDE_CWS = sys.argv[1]
         OVERRIDE_SLICE = sys.argv[2]
         OVERRIDE_OUTPUT = sys.argv[3]

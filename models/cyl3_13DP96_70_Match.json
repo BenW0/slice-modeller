@@ -1,0 +1,35 @@
+{"Stack": {
+  "Name":"cyl3_13DP96_70_Match",
+  "Layers":150,
+  "Width":500,
+  "Height":300
+  },
+  "Primitives":[
+    {
+      "Ellipse": {
+        "D":"96"
+      },
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(179,179,179)"
+    },
+    {
+      "Ellipse": {
+        "D":"96",
+        "Cx":100
+      },
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(179,179,179)"
+    },
+    {
+      "Ellipse": {
+        "D":"96",
+        "Cx":400
+      },
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(179,179,179)"
+    }
+  ]
+}
