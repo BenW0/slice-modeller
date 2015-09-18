@@ -6,7 +6,7 @@
   },
   "Primitives":[
     {
-      "Circ": {
+      "Ellipse": {
         "D":"29"
       },
       "Start":0,

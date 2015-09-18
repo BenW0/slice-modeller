@@ -1,6 +1,6 @@
 __author__ = 'Ben'
 # Builds json files straight to CWS files using sliceModeller and cws_hacker.
-# (c) Ben Weiss, University of Washington 2015
+# (c) Ben Weiss 2015
 # # License: MIT License:
 #
 #    Copyright (c) 2015 Ben Weiss, University of Washington

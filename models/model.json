@@ -1,30 +1,68 @@
 {"Stack": {
   "Name":"Test",
-  "Layers":5,
+  "Layers":10,
   "Width":500,
   "Height":300
   },
   "Primitives":[
     {
-      "Rect": {
-        "Left":50,
-        "Top":100,
-        "Width":200,
-        "Height":100
-      },
+      "Type":"Rect",
+      "Left":50,
+      "Top":100,
+      "Width":200,
+      "Height":100,
+
       "Start":0,
       "End":3,
-      "Color":"rgb(255,255,255)"
+      "Color":"(255,255,255)"
     },
     {
-      "Circ": {
-        "Cx": 75,
-        "Cy": 100,
-        "R": 50
-      },
+      "Type":"Ellipse",
+      "Cx": 75,
+      "Cy": 100,
+      "R": 50,
+
       "Start":3,
       "End":60,
-      "Color":"rgb(230,230,230)"
+      "Color":"(230,230,230)"
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Rect",
+
+      "Left1":0,
+      "Top1":0,
+      "Width1":30,
+      "Height1":30,
+      "Color1":"(255,255,255)",
+
+      "Left2":50,
+      "Top2":50,
+      "Width2":60,
+      "Height2":60,
+      "Color2":"(150,150,150)",
+
+      "Start":0,
+      "End":4
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+
+      "Left1":450,
+      "Top1":0,
+      "Width1":30,
+      "Height1":30,
+      "Color1":"(150,150,255)",
+
+      "Left2":400,
+      "Top2":50,
+      "Width2":60,
+      "Height2":60,
+      "Color2":"(255,255,150)",
+
+      "Start":2,
+      "End":9
     }
   ]
 }
