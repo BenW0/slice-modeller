@@ -1,0 +1,84 @@
+{"Stack": {
+  "Name":"cyl3_70-100-70_blend",
+  "Layers":150,
+  "Width":500,
+  "Height":300,
+  "Antialias":"True"
+  },
+  "Primitives":[
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"36",
+      "Color1":"(178,178,178)",
+      "D2":"29",
+      "Color2":"(255,255,255)",
+
+      "Start":0,
+      "End":75
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"29",
+      "Color1":"(255,255,255)",
+      "D2":"36",
+      "Color2":"(178,178,178)",
+
+      "Start":76,
+      "End":150
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"36",
+      "Cx1":150,
+      "Color1":"(178,178,178)",
+      "Cx2":150,
+      "D2":"29",
+      "Color2":"(255,255,255)",
+
+      "Start":0,
+      "End":75
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"29",
+      "Cx1":150,
+      "Color1":"(255,255,255)",
+      "Cx2":150,
+      "D2":"36",
+      "Color2":"(178,178,178)",
+
+      "Start":76,
+      "End":150
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"36",
+      "Cx1":350,
+      "Color1":"(178,178,178)",
+      "Cx2":350,
+      "D2":"29",
+      "Color2":"(255,255,255)",
+
+      "Start":0,
+      "End":75
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"29",
+      "Cx1":350,
+      "Color1":"(255,255,255)",
+      "Cx2":350,
+      "D2":"36",
+      "Color2":"(178,178,178)",
+
+      "Start":76,
+      "End":150
+    }
+  ]
+}

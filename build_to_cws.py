@@ -37,7 +37,7 @@ import re
 import sliceModeller
 import cws_hacker
 
-OUTPUT_NAME_APPEND = "_2015-09-17_Ben"      # gets appended to the name of the output cws files.
+OUTPUT_NAME_APPEND = "_2015-09-18_Ben"      # gets appended to the name of the output cws files.
 CWS_HACKER_PATH = os.path.abspath(os.path.join(".", "cws_hacker.py"))       # path to cws_hacker.py
 OVERRIDE_CWS = ""           # if not "", overrides the CWS template prompt.
 

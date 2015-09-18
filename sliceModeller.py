@@ -98,7 +98,7 @@ import numbers
 
 # Model file... FUTURE: Turn this into a dialog.
 MODEL_FOLDER = os.path.abspath(os.path.join(".", "models"))
-model = "model.json"
+model = "cyl3_100-70-100_blend.json"
 
 # path to ImageMagick. Leave blank if it's in your path and nobody else has a tool named convert.
 imagemagick_path = r""
@@ -132,12 +132,13 @@ def parse_color(param):
 
 
 class Stack:
-    def __init__(self, name, layers, width, height, exec_code):
+    def __init__(self, name, layers, width, height, exec_code, antialias):
         self.name = name
         self.layers = layers
         self.width = width
         self.height = height
         self.primitives = []
+        self.antialias = antialias
 
         # initialize the execution scope for eval() and exec()
         self.globals = {}
@@ -159,8 +160,12 @@ class Stack:
                 exec_code = js["Stack"]["Variables"]
             else:
                 exec_code = ""
+            antialias = False
+            if "Antialias" in js["Stack"]:
+                if "true" in js["Stack"]["Antialias"].lower():
+                    antialias = True
 
-            stack = cls(name, layers, width, height, exec_code)
+            stack = cls(name, layers, width, height, exec_code, antialias)
 
         except:
             print("Unable to parse Stack file!")
@@ -187,7 +192,9 @@ class Stack:
         if not os.path.exists(outfile):
             os.mkdir(outfile)
 
-        imagemagick_prefix = [os.path.join(imagemagick_path, "convert"), "-size", "%ux%u" % (self.width, self.height), "xc:black", "+antialias"]
+        imagemagick_prefix = [os.path.join(imagemagick_path, "convert"), "-size", "%ux%u" % (self.width, self.height), "xc:black"]
+        if not self.antialias:
+            imagemagick_prefix.extend(["+antialias"])
         image_name = self.name + "%04u.png"
         for layer in range(self.layers):
             if not quiet:
@@ -419,13 +426,14 @@ class SimplePrimitive(Primitive):
             print("Invalid expressions! Left, Top, Right, or Bottom did not evaluate to a number!")
             return out
 
-        left = round(left, 0)
-        top = round(top, 0)
-        right = round(right, 0)
-        bottom = round(bottom, 0)
-        color_r = round(color_r, 0)
-        color_g = round(color_g, 0)
-        color_b = round(color_b, 0)
+        if not self.stack.antialias:
+            left = round(left, 0)
+            top = round(top, 0)
+            right = round(right, 0)
+            bottom = round(bottom, 0)
+            color_r = round(color_r, 0)
+            color_g = round(color_g, 0)
+            color_b = round(color_b, 0)
 
         if self.kind == SimplePrimitive.ELLIPSE:
             out.extend(["-fill", "rgb(%u,%u,%u)" % (color_r, color_g, color_b), "-stroke", "none", "-draw",
