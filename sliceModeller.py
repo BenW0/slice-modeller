@@ -98,7 +98,7 @@ import numbers
 
 # Model file... FUTURE: Turn this into a dialog.
 MODEL_FOLDER = os.path.abspath(os.path.join(".", "models"))
-model = "cyl3_100-70-100_blend.json"
+model = "cyl3x4_Dw=30_Dg=35.json"
 
 # path to ImageMagick. Leave blank if it's in your path and nobody else has a tool named convert.
 imagemagick_path = r""

@@ -83,7 +83,7 @@ def main():
     
     # get the slice files to use
     if OVERRIDE_SLICE == '' :
-        input_slice = tkFileDialog.askopenfilename(filetypes=[('All Files', '.*'), ('Image Files', '.png;.bmp;.tif;.tiff')],title="Select FIRST Slice File")
+        input_slice = tkFileDialog.askopenfilename(filetypes=[('All Files', '.*'), ('Image Files', '*.png;*.bmp;*.tif;*.tiff')],title="Select FIRST Slice File")
     else :
         input_slice = OVERRIDE_SLICE
     

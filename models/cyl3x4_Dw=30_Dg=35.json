@@ -1,0 +1,246 @@
+{"Stack": {
+  "Name":"cyl3x4_Dw=30_Dg=35",
+  "Layers":150,
+  "Width":500,
+  "Height":400,
+  "Antialias":"True",
+  "Variables":"dw=30;dg=35;white=255;gray=178;row1=50;row2=150;row3=250;row4=350"
+  },
+  "Primitives":[
+    {
+      "Name":"                    White Cylinder",
+      "Type":"Ellipse",
+      "D":"dw",
+      "Cy":"row1",
+
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(white,white,white)"
+    },
+    {
+      "Type":"Ellipse",
+      "D":"dw",
+      "Cx":150,
+      "Cy":"row1",
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(white,white,white)"
+    },
+    {
+      "Type":"Ellipse",
+      "D":"dw",
+      "Cx":350,
+      "Cy":"row1",
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(white,white,white)"
+    },
+
+    {
+      "Name":"                    Gray Cylinders",
+      "Type":"Ellipse",
+      "D":"dg",
+      "Cy":"row2",
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(gray,gray,gray)"
+    },
+    {
+      "Type":"Ellipse",
+      "D":"dg",
+      "Cy":"row2",
+      "Cx":150,
+      "Start":0,
+      "End":"150",
+      "Color":"rgb(gray,gray,gray)"
+    },
+    {
+      "Type": "Ellipse",
+      "D": "dg",
+      "Cy": "row2",
+      "Cx": 350,
+      "Start": 0,
+      "End": "150",
+      "Color": "rgb(gray,gray,gray)"
+    },
+
+
+    {
+      "Name":"                    100_70_100 Cylinder",
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dw",
+      "Cy1": "row3",
+      "Color1":"(white,white,white)",
+      "D2":"dg",
+      "Cy2": "row3",
+      "Color2":"(gray,gray,gray)",
+
+      "Start":0,
+      "End":"75"
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dg",
+      "Cy1": "row3",
+      "Color1":"(gray,gray,gray)",
+      "D2":"dw",
+      "Cy2": "row3",
+      "Color2":"(white,white,white)",
+
+      "Start":76,
+      "End":150
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dw",
+      "Cx1":150,
+      "Cy1": "row3",
+      "Color1":"(white,white,white)",
+      "Cx2":150,
+      "Cy2": "row3",
+      "D2":"dg",
+      "Color2":"(gray,gray,gray)",
+
+      "Start":0,
+      "End":"75"
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dg",
+      "Cx1":150,
+      "Cy1": "row3",
+      "Color1":"(gray,gray,gray)",
+      "Cx2":150,
+      "Cy2": "row3",
+      "D2":"dw",
+      "Color2":"(white,white,white)",
+
+      "Start":76,
+      "End":150
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dw",
+      "Cx1":350,
+      "Cy1": "row3",
+      "Color1":"(white,white,white)",
+      "Cx2":350,
+      "Cy2": "row3",
+      "D2":"dg",
+      "Color2":"(gray,gray,gray)",
+
+      "Start":0,
+      "End":"75"
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dg",
+      "Cx1":350,
+      "Cy1": "row3",
+      "Color1":"(gray,gray,gray)",
+      "Cx2":350,
+      "Cy2": "row3",
+      "D2":"dw",
+      "Color2":"(white,white,white)",
+
+      "Start":76,
+      "End":150
+    },
+
+
+
+    {
+      "Name":"                    70_100_70 Cylinder",
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dg",
+      "Cy1": "row4",
+      "Color1":"(gray,gray,gray)",
+      "D2":"dw",
+      "Cy2": "row4",
+      "Color2":"(white,white,white)",
+
+      "Start":0,
+      "End":75
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dw",
+      "Cy1": "row4",
+      "Color1":"(white,white,white)",
+      "D2":"dg",
+      "Cy2": "row4",
+      "Color2":"(gray,gray,gray)",
+
+      "Start":76,
+      "End":150
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dg",
+      "Cx1":150,
+      "Cy1": "row4",
+      "Color1":"(gray,gray,gray)",
+      "Cx2":150,
+      "Cy2": "row4",
+      "D2":"dw",
+      "Color2":"(white,white,white)",
+
+      "Start":0,
+      "End":75
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dw",
+      "Cx1":150,
+      "Cy1": "row4",
+      "Color1":"(white,white,white)",
+      "Cx2":150,
+      "Cy2": "row4",
+      "D2":"dg",
+      "Color2":"(gray,gray,gray)",
+
+      "Start":76,
+      "End":150
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dg",
+      "Cx1":350,
+      "Cy1": "row4",
+      "Color1":"(gray,gray,gray)",
+      "Cx2":350,
+      "Cy2": "row4",
+      "D2":"dw",
+      "Color2":"(white,white,white)",
+
+      "Start":0,
+      "End":75
+    },
+    {
+      "Type":"Cylinder",
+      "Base":"Ellipse",
+      "D1":"dw",
+      "Cx1":350,
+      "Cy1": "row4",
+      "Color1":"(white,white,white)",
+      "Cx2":350,
+      "Cy2": "row4",
+      "D2":"dg",
+      "Color2":"(gray,gray,gray)",
+
+      "Start":76,
+      "End":150
+    }
+  ]
+}

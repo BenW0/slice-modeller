@@ -30,7 +30,8 @@ __author__ = 'Ben'
 import sliceModeller
 
 model_files = ["models/cyl3_70.json", "models/cyl3_100.json", "models/cyl3_70-100-70_stack.json",
-               "models/cyl3_13DP96_70_Match.json", "models/cyl3_13DP96_100_Match.json", "models/model.json"]
+               "models/cyl3_13DP96_70_Match.json", "models/cyl3_13DP96_100_Match.json", "models/model.json",
+               "models/cyl3x2_100and70_aa.json", "models/cyl3x4_Dw=30_Dg=35.json"]
                # ["models/cyl3_13DP96_70_Match.json"]
 
 problems = 0
